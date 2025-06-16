@@ -67,7 +67,6 @@ body {
   padding: 40px 20px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
 }
 
 .email-box h2 {
