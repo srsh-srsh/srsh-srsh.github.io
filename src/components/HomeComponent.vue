@@ -8,7 +8,7 @@
     <div class="layout">
       <div class="content">
         <h1 class="title">Sreesh Poudyal</h1>
-        <h2 class="subtitle">Graphic, Web, and UI/UX Design</h2>
+        <h2 class="subtitle">Graphic Design, Software Engineering, and UI/UX Design</h2>
       </div>
       <div ref="globeContainer" class="globe"></div>
     </div>
@@ -93,6 +93,7 @@ scene.add(light)
   backdrop-filter: blur(5px);
   border-radius: 1rem;
   z-index: 1;
+  margin-left: 1rem;
 }
 
 .title, .subtitle{
