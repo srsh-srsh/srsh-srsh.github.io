@@ -58,6 +58,12 @@ const graphicDesignCards = [
 
 const webDevCards = [
   {
+    title: 'Joshua Kendall Website',
+    image: new URL('../images/JoshuaKendallphoto.png', import.meta.url).href,
+    link: 'https://www.https://joshuackendall.com//',
+    description: 'A series of websites for renowed author and biographer Joshua C. Kendall and his four books.'
+  },
+  {
     title: 'Cardinal Talent AI',
     image: new URL('../images/cardinal_logo.svg', import.meta.url).href,
     link: 'https://www.cardinaltalent.ai/',
