@@ -60,7 +60,7 @@ const webDevCards = [
   {
     title: 'Joshua Kendall Website',
     image: new URL('../images/JoshuaKendallphoto.png', import.meta.url).href,
-    link: 'https://www.https://joshuackendall.com//',
+    link: 'https://joshuackendall.com//',
     description: 'A series of websites for renowed author and biographer Joshua C. Kendall and his four books.'
   },
   {
