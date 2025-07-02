@@ -19,7 +19,7 @@
       <div class="year">2024</div>
       <div class="bubble">
         <ul>
-            <li>Started dual degrees at University of Massachusetts Amherst: BA Political Science & BS Computer Science.
+            <li>Completed dual degrees at University of Massachusetts Amherst: BA Political Science & BS Computer Science.
             </li>
             <li>Began a part time role as a Frontend Engineer at CardinalTalent AI: designing AI interviewer tool webpages with React, TypeScript, Laravel, and Figma.
             </li>

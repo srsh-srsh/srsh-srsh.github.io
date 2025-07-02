@@ -18,6 +18,22 @@ defineProps({
 </script>
 
 <style scoped>
+@media (max-width: 500px) {
+  .box a{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .imageL {
+    display: none;
+  }
+  
+  .box div {
+    margin-left: 0;
+  }
+  
+}
 .box a {
   display: block;
   border-radius: 1rem;
@@ -28,6 +44,11 @@ defineProps({
   width: 100%;
   margin-bottom: 1rem;
 }
+
+.box {
+  border: 3px solid rgb(0, 0, 0);
+}
+
 .box:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);

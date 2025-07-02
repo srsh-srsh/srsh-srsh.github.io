@@ -44,15 +44,15 @@ const graphicDesignCards = [
   },
   {
     title: 'Miscellaneous Designs',
-    image: new URL('../images/cool_leaf-02-02.webp', import.meta.url).href,
+    image: new URL('../images/cool_leaf-02-02.webp', import.meta.                       url).href,
     link: '/misc',
-    description: 'Little tidbits, diagrams, and illustrations that were made for fun'
+    description: 'Little tidbits, diagrams, and illustrations that were made for fun.'
   },
   {
     title: 'Map',
-    image: new URL('../images/mappostergood-Recovered-Recovered-Recovered-Recovered-Recovered.webp', import.meta.url).href,
+    image: new URL('../images/mappostermin.webp', import.meta.url).href,
     link: '/map',
-    description: 'A large poster style map of my home nation, Nepal'
+    description: 'A large poster style map of my home nation, Nepal.'
   }
 ]
 
@@ -146,5 +146,20 @@ const filteredCards = computed(() => {
   height: 100%;
   gap: 2rem;
   padding: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .tabs button {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
 }
 </style>
