@@ -38,7 +38,7 @@ const graphicDesignCards = [
   },
   {
     title: 'Baazar Blend Product Line',
-    image: new URL('../images/logo_teashop_red_background.webp', import.meta.url).href,
+    image: new URL('../images/logo_teashop_red_background.png', import.meta.url).href,
     link: '/bazar',
     description: 'A conceptualization of a brand specializing in spiced tea, including loose leaf, tea bags, cups, and other products.'
   },
@@ -50,7 +50,7 @@ const graphicDesignCards = [
   },
   {
     title: 'Map',
-    image: new URL('../images/mappostermin.webp', import.meta.url).href,
+    image: new URL('../images/mappostermin.png', import.meta.url).href,
     link: '/map',
     description: 'A large poster style map of my home nation, Nepal.'
   }
