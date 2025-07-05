@@ -44,7 +44,7 @@ const graphicDesignCards = [
   },
   {
     title: 'Miscellaneous Designs',
-    image: new URL('../images/cool_leaf-02-02.webp', import.meta.                       url).href,
+    image: new URL('../images/cool_leaf-02-02.webp', import.meta.url).href,
     link: '/misc',
     description: 'Little tidbits, diagrams, and illustrations that were made for fun.'
   },
