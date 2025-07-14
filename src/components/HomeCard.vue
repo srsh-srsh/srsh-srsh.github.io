@@ -47,6 +47,8 @@ defineProps({
 
 .box {
   border: 3px solid rgb(0, 0, 0);
+  align-items: center;
+  justify-content: center;
 }
 
 .box:hover {

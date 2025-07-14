@@ -29,7 +29,7 @@ onMounted(() => {
   renderer.setSize(globeContainer.value.clientWidth, globeContainer.value.clientHeight)
   globeContainer.value.appendChild(renderer.domElement)
 
-  const geometry = new THREE.SphereGeometry(2, 12, 12)
+  const geometry = new THREE.SphereGeometry(4, 30, 30)
   const material = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   wireframe: true,
@@ -47,10 +47,11 @@ scene.add(light)
   scene.add(ambientLight)
 
   camera.position.z = 6
+  globe.position.x += 2
 
   const animate = () => {
     requestAnimationFrame(animate)
-    globe.rotation.y += 0.005
+    globe.rotation.y += 0.002
     renderer.render(scene, camera)
   }
 
@@ -121,6 +122,12 @@ scene.add(light)
 }
 
 @media screen and (max-width: 700px) {
+  .title {
+    font-size: 6rem;
+  }
+  .subtitle {
+    font-size: 4rem;
+  }
   .layout {
     flex-direction: column;
     align-items: center;

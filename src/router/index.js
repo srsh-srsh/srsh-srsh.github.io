@@ -5,6 +5,7 @@ import Bazar from '../views/content/BazarBlend.vue'
 import Logos from '../views/content/Logos.vue'
 import Map from '../views/content/Map.vue'
 import Misc from '../views/content/Misc.vue'
+import SpiceTrail from '../views/content/SpiceTrail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,7 @@ const router = createRouter({
     { path: '/logos', name: 'Logos', component: Logos },
     { path: '/map', name: 'Map', component: Map},
     { path: '/misc', name: 'Misc', component: Misc },
+    {path: '/spicetrail', name: 'SpiceTrail', component: SpiceTrail}
   ]
 })
 

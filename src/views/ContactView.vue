@@ -108,20 +108,22 @@ textarea::placeholder {
 }
 
 button {
-  padding: 12px 24px;
-  background-color: #dbdbdb;
-  color: #000000;
-  border: none;
+  font-weight: bold;
+  color: black;
+  background: white;
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
   border-radius: 5px;
-  font-size: 1.1rem;
-  font-family: 'Jost';
+  display: inline-block;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #000000;
-  color: #fff;
+  transform: scale(1.05);
+  color: #ffffff;
+  border-color: #0074cc;
+  background-color: #78acd3;
 }
 
 .neonHaluka {

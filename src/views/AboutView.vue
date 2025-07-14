@@ -1,7 +1,6 @@
 <template>
     <div>
-      <div class="image-container">          
-        <div class="textbox_about">
+        <div class="textbox">
           <p class="neonWhite">
             Computer Scientist by day, Graphic Designer by night, my experience and education provide me with a whole host of resources at my disposal to create clear cut and effective designs.
           </p>
@@ -9,7 +8,6 @@
             On this platform, you'll find a handful of my design projects, reflecting my passion for blending technology and creativity. Explore and get inspired by the intersection of code and design.
           </p>
         </div>
-      </div>
   
       <div class="timeline-section">
   <h2 class="timeline-title neonWhite">My Journey</h2>
@@ -178,6 +176,9 @@
 
 .year:hover {
   transform: scale(1.05);
+  color: #ffffff;
+  border-color: #0074cc;
+  background-color: #78acd3;
 }
 
 .bubble {
@@ -211,13 +212,21 @@
 
 @media (max-width: 768px) {
   .bubble {
-    left: 50%;
-    top: 110%;
+    left: 55%;
+    top: 50%;
     transform: translateX(-50%) translateY(-10px);
     width: 90vw;
   }
   .timeline-item:hover .bubble {
     transform: translateX(-50%) translateY(0);
+  }
+
+  .timeline-item:nth-child(4) .bubble {
+    top: -200%;
+  }
+
+  .timeline-item:last-child .bubble {
+    top: -200%;
   }
 }
 </style>

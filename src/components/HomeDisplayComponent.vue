@@ -37,10 +37,10 @@ const graphicDesignCards = [
     description: 'A small collection of logos done for certain organizations I have had the pleasure of working with.'
   },
   {
-    title: 'Baazar Blend Product Line',
+    title: 'Spice Trail Tea House',
     image: new URL('../images/logo_teashop_red_background.png', import.meta.url).href,
-    link: '/bazar',
-    description: 'A conceptualization of a brand specializing in spiced tea, including loose leaf, tea bags, cups, and other products.'
+    link: '/spicetrail',
+    description: 'A conceptualization of a tea shop and company specializing in spiced tea, including loose leaf, tea bags, cups, and other products.'
   },
   {
     title: 'Miscellaneous Designs',
@@ -53,7 +53,13 @@ const graphicDesignCards = [
     image: new URL('../images/mappostermin.png', import.meta.url).href,
     link: '/map',
     description: 'A large poster style map of my home nation, Nepal.'
-  }
+  },
+  /*{
+    title: 'Fonts',
+    image: new URL('../images/morong.png', import.meta.url).href,
+    link: '/fonts',
+    description: 'A collection of fonts that I have curated for use in various projects.'
+  }*/
 ]
 
 const webDevCards = [
@@ -104,13 +110,13 @@ const filteredCards = computed(() => {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
 .tabs button {
   font-family: jost;
   font-size: 2rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 0.9rem;
   border: 0px;
   border-bottom: 5px solid #2d2d2d;
   border-radius: 15px;
@@ -145,10 +151,15 @@ const filteredCards = computed(() => {
   justify-content: center;
   height: 100%;
   gap: 2rem;
-  padding: 2rem;
 }
 
 @media screen and (max-width: 600px) {
+  .tabs {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
   .tabs button {
     font-size: 1.5rem;
     padding: 0.4rem 0.8rem;
@@ -156,9 +167,10 @@ const filteredCards = computed(() => {
   
   .container {
     flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+    align-content: center;
+    justify-content: center;
     gap: 1rem;
+    margin-top: 1rem;
   }
   
 }

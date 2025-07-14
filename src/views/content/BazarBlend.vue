@@ -16,6 +16,7 @@ const blend = [
   new URL('../../images/product-darjeeling-back.webp', import.meta.url).href,
   new URL('../../images/product-lineup-2.webp', import.meta.url).href,
   new URL('../../images/product-lineup.webp', import.meta.url).href,
+  new URL('../../images/logo_tea.png', import.meta.url).href,
 ]
 </script>
 
