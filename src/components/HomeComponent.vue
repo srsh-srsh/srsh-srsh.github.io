@@ -4,14 +4,14 @@
     <div class="blur-shape purple"></div>
     <div class="blur-shape blue"></div>
 
-  <div style="display:flex; flex-direction: column;">
-    <div class="layout">
-      <div class="content">
-        <h1 class="title">Sreesh Poudyal</h1>
-        <h2 class="subtitle">Graphic Design, Software Engineering, and UI/UX Design</h2>
+    <div style="display: flex; flex-direction: column;">
+      <div class="layout">
+        <div class="content">
+          <h1 class="title">Sreesh Poudyal</h1>
+          <h2 class="subtitle">Graphic Design, Software Engineering, and UI/UX Design</h2>
+        </div>
+        <div ref="globeContainer" class="globe"></div>
       </div>
-      <div ref="globeContainer" class="globe"></div>
-    </div>
     </div>
   </div>
 </template>
@@ -20,42 +20,83 @@
 import { onMounted, ref } from 'vue'
 import * as THREE from 'three'
 
+import githubImg from '@/images/icons/Node-logo.png'
+import githubImg1 from '@/images/icons/java-logo.png'
+
 const globeContainer = ref(null)
 
+const imageNodes = [
+]
+
 onMounted(() => {
+  const container = globeContainer.value
+  const width = container.clientWidth
+  const height = container.clientHeight
+
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(75, globeContainer.value.clientWidth / globeContainer.value.clientHeight, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
+  camera.position.z = 10
+
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-  renderer.setSize(globeContainer.value.clientWidth, globeContainer.value.clientHeight)
-  globeContainer.value.appendChild(renderer.domElement)
+  renderer.setSize(width, height)
+  container.appendChild(renderer.domElement)
 
-  const geometry = new THREE.SphereGeometry(4, 30, 30)
-  const material = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  wireframe: true,
-  roughness: 0.5,
-})
-  const globe = new THREE.Mesh(geometry, material)
-  scene.add(globe)
+  const raycaster = new THREE.Raycaster()
+  const mouse = new THREE.Vector2()
+  const clickableSprites = []
 
-  const light = new THREE.PointLight(0xffffff, 1)
-light.position.set(5, 5, 5)
-scene.add(light)
-  light.position.set(5, 5, 5)
-  scene.add(light)
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-  scene.add(ambientLight)
+  const radius = 4
+  const spriteGroup = new THREE.Group()
 
-  camera.position.z = 6
-  globe.position.x += 2
+  imageNodes.forEach((node, i) => {
+    const phi = Math.acos(-1 + (2 * i) / imageNodes.length)
+    const theta = Math.sqrt(imageNodes.length * Math.PI) * phi
+
+    const texture = new THREE.TextureLoader().load(node.url)
+    const material = new THREE.SpriteMaterial({ map: texture })
+    const sprite = new THREE.Sprite(material)
+    sprite.scale.set(1.2, 1.2, 1.2)
+
+    sprite.position.setFromSphericalCoords(radius, phi, theta)
+    sprite.userData = { link: node.link }
+
+    spriteGroup.add(sprite)
+    clickableSprites.push(sprite)
+  })
+
+  scene.add(spriteGroup)
 
   const animate = () => {
     requestAnimationFrame(animate)
-    globe.rotation.y += 0.002
+    spriteGroup.rotation.y += 0.002
+    spriteGroup.rotation.x += 0.001
     renderer.render(scene, camera)
   }
 
+  const handleClick = (event) => {
+    const rect = renderer.domElement.getBoundingClientRect()
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+
+    raycaster.setFromCamera(mouse, camera)
+    const intersects = raycaster.intersectObjects(clickableSprites)
+
+    if (intersects.length > 0) {
+      const link = intersects[0].object.userData.link
+      if (link) window.open(link, '_blank')
+    }
+  }
+
+  renderer.domElement.addEventListener('click', handleClick)
   animate()
+
+  window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth
+    const newHeight = container.clientHeight
+    camera.aspect = newWidth / newHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(newWidth, newHeight)
+  })
 })
 </script>
 
@@ -97,7 +138,7 @@ scene.add(light)
   margin-left: 1rem;
 }
 
-.title, .subtitle{
+.title, .subtitle {
   text-align: left;
 }
 
@@ -142,7 +183,6 @@ scene.add(light)
   .globe {
     display: none;
   }
-  
 }
 
 .blur-shape {
@@ -157,7 +197,7 @@ scene.add(light)
 .pink {
   width: 400px;
   height: 400px;
-  background: #00c607;
+  background: #0045c6;
   top: 10%;
   left: 10%;
 }
@@ -165,7 +205,7 @@ scene.add(light)
 .purple {
   width: 500px;
   height: 500px;
-  background: #b80000;
+  background: #00a9b8;
   top: 50%;
   left: 40%;
 }
@@ -173,7 +213,7 @@ scene.add(light)
 .blue {
   width: 300px;
   height: 300px;
-  background: #008d8a;
+  background: #1d05b8;
   bottom: 10%;
   right: 15%;
 }
