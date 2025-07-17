@@ -4,7 +4,7 @@
     <div class="blur-shape purple"></div>
     <div class="blur-shape blue"></div>
 
-    <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <div class="layout">
         <div class="content">
           <h1 class="title">Sreesh Poudyal</h1>
@@ -12,6 +12,11 @@
         </div>
         <div ref="globeContainer" class="globe"></div>
       </div>
+      <!--<div class="resume-container" style="width: 300px; margin-bottom: 2rem; justify-self: center; margin-top: 0;">
+        <a @click="scrollTo(home-display-component)" style="text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+          <h2 style="margin: 0; font-size: 2rem; color: white">Discover More</h2>
+        </a>
+      </div>-->
     </div>
   </div>
 </template>
@@ -19,13 +24,31 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
-import githubImg from '@/images/icons/Node-logo.png'
-import githubImg1 from '@/images/icons/java-logo.png'
+import Node from '@/images/icons/Node_logo.png'
+import Java from '@/images/icons/java_logo.png'
+import Figma from '@/images/icons/Figma_logo.png'
+import Python from '@/images/icons/Python_logo.png'
+import Vue from '@/images/icons/Vue_logo.png'
+import React from '@/images/icons/React_logo.png'
+import Illustrator from '@/images/icons/Illustrator_logo.png'
+import Photoshop from '@/images/icons/Photoshop_logo.png'
+import Php from '@/images/icons/Php_logo.png'
+import HomeDisplayComponent from './HomeDisplayComponent.vue'
 
 const globeContainer = ref(null)
 
 const imageNodes = [
+  { name: 'Node', url: Node, link: 'https://github.com' },
+  { name: 'Java', url: Java, link: 'https://github.com' },
+  { name: 'Figma', url: Figma, link: 'https://github.com' },
+  { name: 'Python', url: Python, link: 'https://github.com' },
+  { name: 'Vue', url: Vue, link: 'https://github.com' },
+  { name: 'React', url: React, link: 'https://github.com' },
+  { name: 'Illustrator', url: Illustrator, link: 'https://github.com' },
+  { name: 'Php', url: Php, link: 'https://github.com' },
+  { name: 'Photoshop', url: Photoshop, link: 'https://github.com' }
 ]
 
 onMounted(() => {
@@ -41,53 +64,127 @@ onMounted(() => {
   renderer.setSize(width, height)
   container.appendChild(renderer.domElement)
 
+  container.setAttribute('draggable', 'false')
+  renderer.domElement.setAttribute('draggable', 'false')
+
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.enableDamping = true
+  controls.dampingFactor = 0.1
+  controls.enableZoom = false
+  controls.rotateSpeed = 0.5
+  controls.autoRotate = true
+  controls.autoRotateSpeed = 3
+  controls.enablePan = false
+
+  let isDragging = false
+  let lastRotation = 0
+  let velocity = 0
+  let friction = 0.99
+  let momentumRotation = 0
+
   const raycaster = new THREE.Raycaster()
   const mouse = new THREE.Vector2()
   const clickableSprites = []
 
-  const radius = 4
+  const radius = 4.5
   const spriteGroup = new THREE.Group()
+  const spritePositions = []
+
+  const textureLoader = new THREE.TextureLoader()
 
   imageNodes.forEach((node, i) => {
     const phi = Math.acos(-1 + (2 * i) / imageNodes.length)
     const theta = Math.sqrt(imageNodes.length * Math.PI) * phi
 
-    const texture = new THREE.TextureLoader().load(node.url)
+    const texture = textureLoader.load(node.url)
     const material = new THREE.SpriteMaterial({ map: texture })
     const sprite = new THREE.Sprite(material)
     sprite.scale.set(1.2, 1.2, 1.2)
 
-    sprite.position.setFromSphericalCoords(radius, phi, theta)
+    const position = new THREE.Vector3().setFromSphericalCoords(radius, phi, theta)
+    sprite.position.copy(position)
     sprite.userData = { link: node.link }
 
     spriteGroup.add(sprite)
     clickableSprites.push(sprite)
+    spritePositions.push(position)
   })
 
   scene.add(spriteGroup)
 
-  const animate = () => {
-    requestAnimationFrame(animate)
-    spriteGroup.rotation.y += 0.002
-    spriteGroup.rotation.x += 0.001
-    renderer.render(scene, camera)
-  }
-
-  const handleClick = (event) => {
-    const rect = renderer.domElement.getBoundingClientRect()
-    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
-    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
-
-    raycaster.setFromCamera(mouse, camera)
-    const intersects = raycaster.intersectObjects(clickableSprites)
-
-    if (intersects.length > 0) {
-      const link = intersects[0].object.userData.link
-      if (link) window.open(link, '_blank')
+  const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 1, transparent: true })
+  for (let i = 0; i < spritePositions.length; i++) {
+    for (let j = i + 1; j < spritePositions.length; j++) {
+      const points = [spritePositions[i], spritePositions[j]]
+      const geometry = new THREE.BufferGeometry().setFromPoints(points)
+      const line = new THREE.Line(geometry, lineMaterial)
+      scene.add(line)
     }
   }
 
-  renderer.domElement.addEventListener('click', handleClick)
+  let prevX = 0
+  renderer.domElement.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+    isDragging = true
+    prevX = e.clientX
+    velocity = 0
+  })
+
+  renderer.domElement.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+      const deltaX = e.clientX - prevX
+      velocity = deltaX * 0.002
+      prevX = e.clientX
+    }
+  })
+
+  renderer.domElement.addEventListener('mouseup', () => {
+    isDragging = false
+    momentumRotation = velocity
+  })
+
+  const keySpeed = 0.03
+  const keysPressed = { left: false, right: false }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keysPressed.left = true
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keysPressed.right = true
+  })
+
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') keysPressed.left = false
+    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keysPressed.right = false
+  })
+
+  const animate = () => {
+    requestAnimationFrame(animate)
+
+    if (!isDragging && Math.abs(momentumRotation) > 0.0001) {
+      spriteGroup.rotation.y += momentumRotation
+      scene.children.forEach(child => {
+        if (child.type === 'Line') child.rotation.y += momentumRotation
+      })
+      momentumRotation *= friction
+    }
+
+    if (keysPressed.left) {
+      spriteGroup.rotation.y -= keySpeed
+      scene.children.forEach(child => {
+        if (child.type === 'Line') child.rotation.y -= keySpeed
+      })
+    }
+
+    if (keysPressed.right) {
+      spriteGroup.rotation.y += keySpeed
+      scene.children.forEach(child => {
+        if (child.type === 'Line') child.rotation.y += keySpeed
+      })
+    }
+
+    controls.update()
+    renderer.render(scene, camera)
+  }
+
   animate()
 
   window.addEventListener('resize', () => {
@@ -99,6 +196,7 @@ onMounted(() => {
   })
 })
 </script>
+
 
 <style scoped>
 @font-face {
@@ -124,9 +222,10 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   max-width: 1400px;
-  z-index: 2;
+  margin-top: 3rem;
+  height: 600px;
 }
 
 .content {
@@ -146,6 +245,7 @@ onMounted(() => {
   flex: 1;
   height: 800px;
   min-width: 300px;
+  margin-bottom: 0;
 }
 
 .title {
@@ -162,17 +262,49 @@ onMounted(() => {
   color: #ffffff;
 }
 
+a {
+  font-family: jost;
+  font-size: 1.8rem;
+  padding: 0.4rem 0.7rem;
+  border: 0px;
+  border: 3px solid #ffffff;
+  border-radius: 15px;
+  background: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+a:hover {
+  color: #ffffff;
+  background-color: #0074cc;
+  border-color: #78acd3;
+  opacity: 20%;
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 700px) {
   .title {
     font-size: 6rem;
   }
   .subtitle {
     font-size: 4rem;
+    padding-bottom: 0;
   }
+
+  .content {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+  }
+
   .layout {
     flex-direction: column;
     align-items: center;
-    z-index: 2;
+    padding-bottom: 0;
   }
   
   .content {
@@ -192,6 +324,7 @@ onMounted(() => {
   opacity: 0.6;
   animation: float 12s ease-in-out infinite;
   mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .pink {

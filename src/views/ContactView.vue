@@ -18,7 +18,11 @@
         <label for="message" class="neonText">Your Message:</label>
         <textarea id="message" name="message" rows="4" placeholder="Type your message here" required></textarea>
 
-        <button type="submit">Send Message</button>
+    <div class="resume-container" style="width: 150px; background-color: white; border: 3px solid black; border-radius: 15px; margin-bottom: 0rem; justify-self: center; justify-items: center;">
+      <button type="submit" style="border: none; text-decoration: none; color: black; display: flex; flex-direction: row; align-items: center; padding: 0.5rem; justify-content: center;">
+        <h2 style="margin: 0; font-size: 1.2rem;">Send Message</h2>
+      </button>
+    </div>
     </form>
 </section>
 </template>
@@ -66,7 +70,6 @@ body {
   margin-top: 60px;
   padding: 40px 20px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .email-box h2 {
@@ -110,21 +113,33 @@ textarea::placeholder {
 button {
   font-weight: bold;
   color: black;
-  background: white;
+  background: none;
   padding: 0.5rem 1rem;
   border: 2px solid black;
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  /* Removed individual button hover animations */
 }
 
 button:hover {
-  transform: scale(1.05);
-  color: #ffffff;
-  border-color: #0074cc;
-  background-color: #78acd3;
+  /* Empty to disable button-specific hover effect */
 }
+
+.resume-container {
+  width: 150px;
+  border: 3px solid black;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  justify-self: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resume-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 
 .neonHaluka {
   color: #000000;

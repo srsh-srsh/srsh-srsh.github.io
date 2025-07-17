@@ -1,5 +1,6 @@
 <template>
-  <div class="tabs" style="margin-bottom: 0;">
+  <div style="background-color: white;  padding-top: 25px;">
+  <div class="tabs" style="margin-bottom: 0;" id="home-display-component">
     <button 
       v-for="tab in tabs" 
       :key="tab" 
@@ -19,6 +20,7 @@
       :link="item.link"
       :description="item.description"
     />
+  </div>
   </div>
 </template>
 
@@ -110,15 +112,15 @@ const filteredCards = computed(() => {
   display: flex;
   justify-content: center;
   margin: 2rem 0;
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .tabs button {
   font-family: jost;
-  font-size: 2rem;
-  padding: 0.6rem 0.9rem;
+  font-size: 1.8rem;
+  padding: 0.4rem 0.7rem;
   border: 0px;
-  border-bottom: 5px solid #2d2d2d;
+  border: 3px solid #000000;
   border-radius: 15px;
   background: none;
   cursor: pointer;
@@ -150,6 +152,8 @@ const filteredCards = computed(() => {
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
+  width: 100%;
+  margin-top: 2rem;
   gap: 2rem;
 }
 
@@ -158,11 +162,12 @@ const filteredCards = computed(() => {
     flex-direction: row;
     align-items: center;
     margin-bottom: 1rem;
+    width: 100%;
   }
 
   .tabs button {
     font-size: 1.5rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 0.6rem;
   }
   
   .container {
@@ -170,7 +175,13 @@ const filteredCards = computed(() => {
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1rem;
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 0;
+  }
+
+  .layout{
+    height: 500px;
   }
   
 }

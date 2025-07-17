@@ -76,7 +76,7 @@
       </ul>
     </div>
   </div>
-<div class="resume-container" style="width: 10%; border: 2px solid black; border-radius: 50px; margin-bottom: 2rem; justify-self: center;">
+<div class="resume-container" style="width: 150px; border: 3px solid black; border-radius: 15px; margin-bottom: 2rem; justify-self: center;">
   <a href="/resume" style="text-decoration: none; color: black; display: flex; flex-direction: row; align-items: center; padding: 0.5rem; justify-content: center;">
     <img src="../images/icons/download.png" alt="Resume" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid black; object-fit: cover; margin-right: 0.5rem;" />
     <h2 style="margin: 0; font-size: 1.2rem;">Resume</h2>
@@ -96,6 +96,12 @@ nav ul {
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.resume-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .neonWhite {

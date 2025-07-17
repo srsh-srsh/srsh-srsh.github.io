@@ -4,23 +4,43 @@ import HomeDisplay from '../components/HomeDisplayComponent.vue';
 </script>
 
 <template>
-  <main>
-    <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Newa&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tilt Neon">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href=".\styles.css" />
-    <title>Sreesh Poudyal</title>
-</head>
-<body>
-    <div style="width: 100%; margin: 0; padding: 0; left: 0; top: 0">        
-        <HomeComponent />
-        <HomeDisplay />
+  <div class="page-wrapper">
+    <!-- Fixed Header (HomeComponent) -->
+    <div class="home-component">
+      <HomeComponent />
     </div>
-</body>
-  </main>
+
+    <!-- Scrollable content that scrolls over the fixed header -->
+    <div class="home-display">
+      <HomeDisplay />
+    </div>
+  </div>
 </template>
+
+<style scoped>
+/* Page wrapper handles layout */
+.page-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fixed component at top */
+.home-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full screen */
+  z-index: 1; /* Must be ABOVE other content to show */
+  background-color: white; /* Or whatever the background is */
+}
+
+/* Content that scrolls upward, eventually covering the fixed component */
+.home-display {
+  position: relative;
+  z-index: 2;
+  margin-top: 100vh; /* Starts just below fixed component */
+}
+</style>

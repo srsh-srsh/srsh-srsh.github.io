@@ -23,6 +23,7 @@ defineProps({
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
   }
   
   .imageL {
@@ -36,8 +37,8 @@ defineProps({
 }
 .box a {
   display: block;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  background: rgb(0, 0, 0);
   backdrop-filter: blur(10px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
@@ -57,7 +58,7 @@ defineProps({
 }
 .imageL {
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 15px;
   margin-bottom: 0.5rem;
   height: 200px;
   object-fit: cover;
