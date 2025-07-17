@@ -250,7 +250,7 @@ onMounted(() => {
 
 .title {
   font-family: 'Nagasaki';
-  font-size: 7rem;
+  font-size: 11rem;
   margin: 0;
   color: #fff;
 }
