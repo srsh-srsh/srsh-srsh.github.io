@@ -31,7 +31,7 @@ defineProps({
   }
   
   .box div {
-    margin-left: 0;
+    margin-left: 10px;
   }
   
 }
@@ -48,8 +48,9 @@ defineProps({
 
 .box {
   border: 3px solid rgb(0, 0, 0);
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  padding-left: 8px;
 }
 
 .box:hover {
@@ -60,7 +61,7 @@ defineProps({
   width: 100%;
   border-radius: 15px;
   margin-bottom: 0.5rem;
-  height: 200px;
+  max-height: 200px;
   object-fit: cover;
 }
 .neonWhite {

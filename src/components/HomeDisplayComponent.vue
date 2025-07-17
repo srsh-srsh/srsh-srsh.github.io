@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: white;  padding-top: 25px;">
+  <div style="background-color: white;  padding-top: 25px; width: 100%;">
   <div class="tabs" style="margin-bottom: 0;" id="home-display-component">
     <button 
       v-for="tab in tabs" 
@@ -166,7 +166,7 @@ const filteredCards = computed(() => {
   }
 
   .tabs button {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding: 0.4rem 0.6rem;
   }
   

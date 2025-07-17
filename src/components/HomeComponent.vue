@@ -248,9 +248,13 @@ onMounted(() => {
   margin-bottom: 0;
 }
 
+canvas{
+  z-index: 500;
+}
+
 .title {
   font-family: 'Nagasaki';
-  font-size: 11rem;
+  font-size: 8rem;
   margin: 0;
   color: #fff;
 }
@@ -260,6 +264,7 @@ onMounted(() => {
   font-size: 5rem;
   margin-top: 1rem;
   color: #ffffff;
+  width: 100%;
 }
 
 a {
@@ -280,6 +285,32 @@ a:hover {
   border-color: #78acd3;
   opacity: 20%;
   border-radius: 15px;
+}
+
+@media screen and (max-width: 1150) {
+  .layout {
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    margin-top: 2rem;
+  }
+
+  .content {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+
+  .globe {
+    height: 400px;
+    width: 90vw;
+    margin-bottom: 0;
+  }
+
+  .title{
+    font-size: 8rem;
+  }
+  
 }
 
 @media screen and (max-width: 700px) {
