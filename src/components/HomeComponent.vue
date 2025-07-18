@@ -204,20 +204,6 @@ onMounted(() => {
   src: url('../font/NAGASAKI.TTF') format('truetype');
 }
 
-.blur-background {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: #0d0d0d;
-  color: #fff;
-  font-family: 'Noto Sans Newa', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
-}
-
 .layout {
   display: flex;
   justify-content: space-between;
@@ -346,6 +332,20 @@ a:hover {
   .globe {
     display: none;
   }
+}
+
+.blur-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: 'Noto Sans Newa', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
 }
 
 .blur-shape {

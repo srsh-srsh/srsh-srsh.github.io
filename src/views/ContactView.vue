@@ -119,25 +119,21 @@ button {
   border-radius: 5px;
   display: inline-block;
   cursor: pointer;
-  /* Removed individual button hover animations */
 }
 
 button:hover {
-  /* Empty to disable button-specific hover effect */
 }
 
 .resume-container {
-  width: 150px;
-  border: 3px solid black;
-  border-radius: 15px;
-  margin-bottom: 2rem;
-  justify-self: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: translateY(0px);
+  background-color: white;
 }
 
 .resume-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: white;
 }
 
 

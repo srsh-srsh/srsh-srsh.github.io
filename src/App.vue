@@ -4,6 +4,10 @@ import Footer from './components/Footer.vue'
 </script>
 
 <template>
+  <div class="blur-background">
+    <div class="blur-shape pink"></div>
+    <div class="blur-shape purple"></div>
+    <div class="blur-shape blue"></div>
   <div class="layout">
     <header>
       <div class="wrapper">
@@ -21,6 +25,7 @@ import Footer from './components/Footer.vue'
     <Footer />
     </div>
   </div>
+  </div>
 </template>
 
 <style scoped>
@@ -28,10 +33,12 @@ import Footer from './components/Footer.vue'
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
 }
 
 .main-content {
   flex: 1;
+  width: 100%;
 }
 
 app {
@@ -88,6 +95,53 @@ nav a:first-of-type {
 
 .layout > *:last-child {
   margin-top: auto;
+}
+
+.blur-background {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: 'Noto Sans Newa', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.blur-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 12s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.pink {
+  width: 400px;
+  height: 400px;
+  background: #0045c6;
+  top: 10%;
+  left: 10%;
+}
+
+.purple {
+  width: 500px;
+  height: 500px;
+  background: #00a9b8;
+  top: 50%;
+  left: 40%;
+}
+
+.blue {
+  width: 300px;
+  height: 300px;
+  background: #1d05b8;
+  bottom: 10%;
+  right: 15%;
 }
 
 @media (min-width: 1024px) {
