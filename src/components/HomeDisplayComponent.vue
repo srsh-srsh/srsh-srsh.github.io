@@ -1,5 +1,6 @@
 <template>
-  <div style="background-color: white;  padding-top: 25px; width: 100%;">
+  <div style="background-color: white;    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(50px);  padding-top: 25px; width: 100%;">
   <div class="tabs" style="margin-bottom: 0;" id="home-display-component">
     <button 
       v-for="tab in tabs" 
@@ -25,11 +26,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import Card from './HomeCard.vue'
+import { ref, computed, defineAsyncComponent } from 'vue'
+const Card = defineAsyncComponent(() => import('./HomeCard.vue'))
 
-const tabs = ['Graphic Design', 'Web Development', 'UI/UX']
-const currentTab = ref('Graphic Design')
+const tabs = ['Web Development','Graphic Design', 'UI/UX']
+const currentTab = ref('Web Development')
 
 const graphicDesignCards = [
   {
@@ -122,28 +123,24 @@ const filteredCards = computed(() => {
   border: 0px;
   border: 3px solid #000000;
   border-radius: 15px;
+  color: #ffffff;
+  border-color: #ffffff;
   background: none;
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .tabs button:hover {
-  color: #ffffff;
-  background-color: #0074cc;
-  border-color: #78acd3;
-  opacity: 20%;
+  color: #000000;
+  border-color: #000000;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 
 .tabs button.active {
-  color: #0074cc;
-  border-color: #0074cc;
-  border-radius: 15px;
-}
-
-.tabs button.active:hover{
-  color: #ffffff;
-  border-color: #78acd3;
+  color: #000000;
+  border-color: #000000;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 

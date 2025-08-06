@@ -18,12 +18,21 @@ defineProps({
 </script>
 
 <style scoped>
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+  .neonWhite {
+    color: #4f4f4f;
+    font-size: 1rem;
+  }
+  .neonHaluka {
+    color: #000000;
+    font-size: 2rem;
+  }
   .box a{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100%;
+    max-width: 80%;
+    padding: 0rem;
   }
   
   .imageL {
@@ -35,6 +44,7 @@ defineProps({
   }
   
 }
+
 .box a {
   display: block;
   border-radius: 15px;
@@ -42,7 +52,7 @@ defineProps({
   backdrop-filter: blur(10px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
-  width: 100%;
+  width: 80%;
   margin-bottom: 1rem;
 }
 
@@ -51,6 +61,7 @@ defineProps({
   align-items: start;
   justify-content: center;
   padding-left: 8px;
+  background-color: #ffffff;
 }
 
 .box:hover {
@@ -60,16 +71,15 @@ defineProps({
 .imageL {
   width: 100%;
   border-radius: 15px;
-  margin-bottom: 0.5rem;
   max-height: 200px;
   object-fit: cover;
 }
 .neonWhite {
-  color: #4f4f4f;
-  font-size: 2rem;
+  color: #000000;
+  font-size: 1.75rem;
 }
 .neonHaluka {
   color: #000000;
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 </style>

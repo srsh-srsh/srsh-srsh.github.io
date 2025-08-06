@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Footer from './components/Footer.vue'
+import { ref } from 'vue';
+import { defineStore } from 'pinia'
 </script>
 
 <template>
@@ -34,6 +36,7 @@ import Footer from './components/Footer.vue'
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  z-index: 2 ;
 }
 
 .main-content {
@@ -107,7 +110,6 @@ nav a:first-of-type {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 0;
 }
 
 .blur-shape {

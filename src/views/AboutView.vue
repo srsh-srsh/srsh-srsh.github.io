@@ -2,15 +2,15 @@
   <div>
     <div class="textbox">
       <p class="neonWhite">
-        Computer Scientist by day, Graphic Designer by night, my experience and education provide me with a whole host of resources at my disposal to create clear cut and effective designs.
+        Programmer by day, Designer by night, my experience and education provide me with a whole host of resources at my disposal to create clear cut and effective designs. Currently looking for a full time job in Frontend, Fullstack, or UI/UX design.
       </p>
       <p class="neonWhite">
-        On this platform, you'll find a handful of my design projects, reflecting my passion for blending technology and creativity. Explore and get inspired by the intersection of code and design.
+        On this platform, you'll find a handful of my projects, reflecting my passion for blending technology and creativity. Explore and get inspired by the intersection of code and design.
       </p>
     </div>
 
     <div class="timeline-section">
-      <h2 class="timeline-title neonWhite">My Journey</h2>
+      <h2 class="timeline-title neonWhite" style="color: white;">My Journey</h2>
       <ul class="timeline">
 
         <li class="timeline-item">
@@ -76,6 +76,26 @@
       </ul>
     </div>
   </div>
+
+  <div>
+    <h2 class="timeline-title neonWhite" style="color: white;">My Skills</h2>
+    <div class="custom-marquee">
+      <div class="custom-marquee-track">
+        <div
+          v-for="img in imagesRepeated"
+          :key="img.url"
+          class="image-wrapper"
+        >
+          <img
+            :src="img.url"
+            :alt="img.name"
+            class="marquee-img"
+          />
+          <span class="image-label">{{ img.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="resume-container" style="width: 150px; border: 3px solid black; border-radius: 15px; margin-bottom: 2rem; justify-self: center;">
   <a href="/resume" style="text-decoration: none; color: black; display: flex; flex-direction: row; align-items: center; padding: 0.5rem; justify-content: center;">
     <img src="../images/icons/download.png" alt="Resume" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid black; object-fit: cover; margin-right: 0.5rem;" />
@@ -85,6 +105,46 @@
 
 </template>
 
+<script setup>
+import Node from '@/images/icons/Node_logo.png'
+import Java from '@/images/icons/java_logo.png'
+import Figma from '@/images/icons/Figma_logo.png'
+import Python from '@/images/icons/Python_logo.png'
+import Vue from '@/images/icons/Vue_logo.png'
+import React from '@/images/icons/React_logo.png'
+import Illustrator from '@/images/icons/Illustrator_logo.png'
+import Photoshop from '@/images/icons/Photoshop_logo.png'
+import Php from '@/images/icons/Php_logo.png'
+import Wordpress from '@/images/icons/Wordpress_logo.png'
+import Flutter from '@/images/icons/Flutter_logo.png'
+import Scala from '@/images/icons/Scala_logo.png'
+import HTML from '@/images/icons/HTML_logo.png'
+import Csharp from '@/images/icons/Csharp_logo.png'
+import Rust from '@/images/icons/Rust_logo.png'
+import Javascript from '@/images/icons/javascript_logo.png'
+import Vue3Marquee from 'vue3-marquee'
+
+const images = [
+  { name: 'NodeJS', url: Node, link: 'https://github.com' },
+  { name: 'Java', url: Java, link: 'https://github.com' },
+  { name: 'Figma', url: Figma, link: 'https://github.com' },
+  { name: 'Python', url: Python, link: 'https://github.com' },
+  { name: 'VueJS', url: Vue, link: 'https://github.com' },
+  { name: 'ReactJS', url: React, link: 'https://github.com' },
+  { name: 'Adobe Illustrator', url: Illustrator, link: 'https://github.com' },
+  { name: 'Php', url: Php, link: 'https://github.com' },
+  { name: 'Adobe Photoshop', url: Photoshop, link: 'https://github.com' },
+  { name: 'Wordpress', url: Wordpress, link: 'https://github.com' },
+  { name: 'Flutter', url: Flutter, link: 'https://github.com' },
+  { name: 'Scala', url: Scala, link: 'https://github.com' },
+  { name: 'Csharp', url: Csharp, link: 'https://github.com' },
+  { name: 'Rust', url: Rust, link: 'https://github.com' },
+  { name: 'HTML', url: HTML, link: 'https://github.com' },
+  { name: 'Javascript', url: Javascript, link: 'https://github.com' },
+]
+
+const imagesRepeated = [...images, ...images]
+</script>
   
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Newa&display=swap');
@@ -114,6 +174,59 @@ nav ul {
   color: rgb(0, 0, 0);
 }
 
+.custom-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.custom-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+.marquee-img {
+  height: 80px;
+  margin: 2rem;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0 0rem;
+}
+
+.image-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.image-wrapper:hover .image-label {
+  opacity: 1;
+}
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .image-container {
   display: flex;
   flex-wrap: wrap;
@@ -127,11 +240,6 @@ nav ul {
   width: 200px;
   height: auto;
   margin: 10px;
-}
-
-.textbox_about {
-  max-width: 600px;
-  margin: 20px;
 }
 
 .footer-content {
@@ -168,7 +276,7 @@ nav ul {
 }
 
 .timeline-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -192,10 +300,11 @@ nav ul {
 
 .year {
   font-weight: bold;
-  color: black;
-  background: white;
+  color: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(50px);
   padding: 0.5rem 1rem;
-  border: 2px solid black;
+  border: 3px solid rgb(255, 255, 255);
   border-radius: 10px;
   display: inline-block;
   cursor: pointer;
@@ -205,9 +314,9 @@ nav ul {
 
 .year:hover {
   transform: scale(1.05);
-  color: #ffffff;
-  border-color: #0074cc;
-  background-color: #78acd3;
+  color: #000000;
+  border-color: #000000;
+  background-color: #ffffff;
 }
 
 .bubble {

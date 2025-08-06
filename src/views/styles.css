@@ -74,12 +74,14 @@ a:link {
 }
 
 .textbox {
-    background-color: #ffffff;
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);    
+    border: #000000 3px solid;
     padding: 20px;
     text-align: center;
     margin: 40px auto;
     margin-bottom: -50px;
-    margin-top: 70px;
+    margin-top: 90px;
     width: 70%;
     border-radius: 20px;
     position: relative;
@@ -132,7 +134,7 @@ a:link {
     position: relative;
     padding: 80px;
     margin: 1rem;
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
     animation: flicker 1.5s;
     overflow: hidden;
@@ -154,7 +156,7 @@ a:link {
   }
 
   .neonWhite {
-    color: rgb(63, 63, 63);
+    color: rgb(0, 0, 0);
     font-size: 1.2rem;
   }
 

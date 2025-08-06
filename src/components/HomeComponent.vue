@@ -4,19 +4,24 @@
     <div class="blur-shape purple"></div>
     <div class="blur-shape blue"></div>
 
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="layout-wrapper">
       <div class="layout">
         <div class="content">
           <h1 class="title">Sreesh Poudyal</h1>
-          <h2 class="subtitle">Graphic Design, Software Engineering, and UI/UX Design</h2>
+          <h2 class="subtitle">Web Development, UI/UX, and Graphic Design</h2>
         </div>
         <div ref="globeContainer" class="globe"></div>
       </div>
+
       <!--<div class="resume-container" style="width: 300px; margin-bottom: 2rem; justify-self: center; margin-top: 0;">
         <a @click="scrollTo(home-display-component)" style="text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: center;">
           <h2 style="margin: 0; font-size: 2rem; color: white">Discover More</h2>
         </a>
       </div>-->
+
+      <div v-if="lastClicked" class="clicked-label">
+        {{ lastClicked }}
+      </div>
     </div>
   </div>
 </template>
@@ -35,21 +40,26 @@ import React from '@/images/icons/React_logo.png'
 import Illustrator from '@/images/icons/Illustrator_logo.png'
 import Photoshop from '@/images/icons/Photoshop_logo.png'
 import Php from '@/images/icons/Php_logo.png'
+import Wordpress from '@/images/icons/Wordpress_logo.png'
 import HomeDisplayComponent from './HomeDisplayComponent.vue'
 
 const globeContainer = ref(null)
+const lastClicked = ref(null)
+var indexClicked = ref(0)
 
 const imageNodes = [
-  { name: 'Node', url: Node, link: 'https://github.com' },
+  { name: 'NodeJS', url: Node, link: 'https://github.com' },
   { name: 'Java', url: Java, link: 'https://github.com' },
   { name: 'Figma', url: Figma, link: 'https://github.com' },
   { name: 'Python', url: Python, link: 'https://github.com' },
-  { name: 'Vue', url: Vue, link: 'https://github.com' },
-  { name: 'React', url: React, link: 'https://github.com' },
-  { name: 'Illustrator', url: Illustrator, link: 'https://github.com' },
+  { name: 'VueJS', url: Vue, link: 'https://github.com' },
+  { name: 'ReactJS', url: React, link: 'https://github.com' },
+  { name: 'Adobe Illustrator', url: Illustrator, link: 'https://github.com' },
   { name: 'Php', url: Php, link: 'https://github.com' },
-  { name: 'Photoshop', url: Photoshop, link: 'https://github.com' }
+  { name: 'Adobe Photoshop', url: Photoshop, link: 'https://github.com' },
+  { name: 'Wordpress', url: Wordpress, link: 'https://github.com' },
 ]
+
 
 onMounted(() => {
   const container = globeContainer.value
@@ -73,11 +83,10 @@ onMounted(() => {
   controls.enableZoom = false
   controls.rotateSpeed = 0.5
   controls.autoRotate = true
-  controls.autoRotateSpeed = 3
+  controls.autoRotateSpeed = 1
   controls.enablePan = false
 
   let isDragging = false
-  let lastRotation = 0
   let velocity = 0
   let friction = 0.99
   let momentumRotation = 0
@@ -194,6 +203,27 @@ onMounted(() => {
     camera.updateProjectionMatrix()
     renderer.setSize(newWidth, newHeight)
   })
+
+renderer.domElement.addEventListener('click', (event) => {
+  if (isDragging) return
+
+  const rect = renderer.domElement.getBoundingClientRect()
+  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+
+  raycaster.setFromCamera(mouse, camera)
+  const intersects = raycaster.intersectObjects(clickableSprites)
+
+  if (intersects.length > 0) {
+    const clickedSprite = intersects[0].object
+    indexClicked.value = clickableSprites.indexOf(clickedSprite)
+    const clickedNode = imageNodes[indexClicked.value]
+    if (clickedNode) {
+      lastClicked.value = clickedNode.name
+      setTimeout(() => { lastClicked.value = null }, 1000)
+    }
+  }
+})
 })
 </script>
 
@@ -232,6 +262,30 @@ onMounted(() => {
   height: 800px;
   min-width: 300px;
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clicked-label {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease;
+  z-index: 30;
+  text-align: center;
 }
 
 canvas{
