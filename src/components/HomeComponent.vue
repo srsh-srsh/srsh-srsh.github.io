@@ -243,7 +243,7 @@ renderer.domElement.addEventListener('click', (event) => {
   width: 100%;
   max-width: 1400px;
   margin-top: 3rem;
-  height: auto;
+  height: 600px;
 }
 
 .content {
