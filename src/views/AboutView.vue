@@ -5,7 +5,7 @@
         Programmer by day, Designer by night, my experience and education provide me with a whole host of resources at my disposal to create clear cut and effective designs. Currently looking for a full time job in Frontend, Fullstack, or UI/UX design.
       </p>
       <p class="neonWhite">
-        On this platform, you'll find a handful of my projects, reflecting my passion for blending technology and creativity. Explore and get inspired by the intersection of code and design.
+        Currently looking for my first full time role in tech. On this platform, you'll find a handful of my projects, reflecting my passion for blending technology and creativity. Explore and get inspired by the intersection of code and design.
       </p>
     </div>
 

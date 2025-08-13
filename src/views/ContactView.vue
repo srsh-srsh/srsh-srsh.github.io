@@ -1,7 +1,7 @@
 <template>
 <header>
     <div class="textbox">
-        <p class="neonWhite">Welcome to my creative space where design meets innovation. Here, you'll find a showcase of some of my notable graphic design projects. Feel free to contact me, and we can brainstorm something together!</p>
+        <p class="neonWhite">Welcome to my creative space where design meets innovation. Here, you'll find a showcase of some of my notable projects across various fields. Feel free to contact me, and we can brainstorm something together!</p>
     </div>
 </header>
 

@@ -13,12 +13,6 @@
         <div ref="globeContainer" class="globe"></div>
       </div>
 
-      <!--<div class="resume-container" style="width: 300px; margin-bottom: 2rem; justify-self: center; margin-top: 0;">
-        <a @click="scrollTo(home-display-component)" style="text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: center;">
-          <h2 style="margin: 0; font-size: 2rem; color: white">Discover More</h2>
-        </a>
-      </div>-->
-
       <div v-if="lastClicked" class="clicked-label">
         {{ lastClicked }}
       </div>
@@ -65,6 +59,14 @@ onMounted(() => {
   const container = globeContainer.value
   const width = container.clientWidth
   const height = container.clientHeight
+
+  requestAnimationFrame(() => {
+    const newWidth = container.clientWidth
+    const newHeight = container.clientHeight
+    camera.aspect = newWidth / newHeight
+    camera.updateProjectionMatrix()
+    renderer.setSize(newWidth, newHeight)
+  })
 
   const scene = new THREE.Scene()
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
@@ -241,7 +243,7 @@ renderer.domElement.addEventListener('click', (event) => {
   width: 100%;
   max-width: 1400px;
   margin-top: 3rem;
-  height: 600px;
+  height: auto;
 }
 
 .content {
@@ -327,7 +329,7 @@ a:hover {
   border-radius: 15px;
 }
 
-@media screen and (max-width: 1150) {
+@media screen and (max-width: 1150px) {
   .layout {
     flex-direction: column;
     align-items: center;
@@ -342,9 +344,7 @@ a:hover {
   }
 
   .globe {
-    height: 400px;
-    width: 90vw;
-    margin-bottom: 0;
+    display: none;
   }
 
   .title{
