@@ -1,7 +1,7 @@
 <template>
 
     <div class="textbox">
-        <p class="neonWhite">An introductionary pamphlet for the Impactful Education Summer Program, a summer program for deserving children in the Ivory Coast.</p>
+        <p class="neonWhite">An introductory pamphlet for the Impactful Education Summer Program, a summer program for deserving children in the Ivory Coast.</p>
     </div>
 
   <div style="margin-top: 4rem;">

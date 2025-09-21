@@ -12,7 +12,7 @@
         :alt="'Image ' + (index + 1)"
       />
       
-      <video :controls="false" loops autoplay muted
+      <video :controls="false" loop autoplay muted
         v-else-if="item.type === 'video'"
         :src="item.src"
         controls
