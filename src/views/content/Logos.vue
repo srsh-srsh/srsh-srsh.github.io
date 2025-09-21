@@ -17,7 +17,8 @@ const logos = [
   new URL('../../images/126903761_843966036406371_2873100655496944690_n.jpg', import.meta.url).href,
   new URL('../../images/logo_1.webp', import.meta.url).href,
   new URL('../../images/logo_sugarloaf.webp', import.meta.url).href,
-  new URL('../../images/WesternMassNepaliLogo-01.png', import.meta.url).href
+  new URL('../../images/WesternMassNepaliLogo-01.png', import.meta.url).href,
+  new URL('../../images/impactful_logo.svg', import.meta.url).href
 ]
 </script>
 

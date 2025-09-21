@@ -34,6 +34,12 @@ const currentTab = ref('Web Development')
 
 const graphicDesignCards = [
   {
+    title: 'Impactful Education',
+    image: new URL('/src/images/catalogue_images/impactful_catalogue-1.webp', import.meta.url).href,
+    link: '/impactfuleducation',
+    description: 'Graphic and product design work done for the Impactful Education non-profit.'
+  },
+  {
     title: 'Logo Design',
     image: new URL('../images/logo_final.webp', import.meta.url).href,
     link: '/logos',
