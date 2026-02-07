@@ -62,16 +62,16 @@ const graphicDesignCards = [
     image: new URL('../images/mappostermin.png', import.meta.url).href,
     link: '/map',
     description: 'A large poster style map of my home nation, Nepal.'
-  },
-  /*{
-    title: 'Fonts',
-    image: new URL('../images/morong.png', import.meta.url).href,
-    link: '/fonts',
-    description: 'A collection of fonts that I have curated for use in various projects.'
-  }*/
+  }
 ]
 
 const webDevCards = [
+  {
+    title: 'Lekheko',
+    image: new URL('../images/lekheko_dot_com.png', import.meta.url).href,
+    link: 'https://www.lekheko.com/',
+    description: 'A self-run design studio website where I sell the fonts that I create.'
+  },
   {
     title: 'Joshua Kendall Website',
     image: new URL('../images/JoshuaKendallphoto.png', import.meta.url).href,
@@ -90,6 +90,7 @@ const webDevCards = [
     link: 'https://www.sitesaga.com/',
     description: 'A website all about WordPress and web hosting that I designed and created pages for.'
   }
+
 ]
 
 const uiuxCards = [

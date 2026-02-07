@@ -15,6 +15,18 @@
 
         <li class="timeline-item">
           <div class="timeline-entry">
+            <div class="year">2025</div>
+            <div class="bubble">
+              <ul>
+                <li>Worked with a non-profit organization called Impactful Education as a Graphic Designer to produce promotional materials and design their brand.</li>
+                <li>Joined ReefnBid as a developer, to add features and functionality to their online auction marketplace.</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="timeline-item">
+          <div class="timeline-entry">
             <div class="year">2024</div>
             <div class="bubble">
               <ul>

@@ -35,6 +35,7 @@ import Illustrator from '@/images/icons/Illustrator_logo.png'
 import Photoshop from '@/images/icons/Photoshop_logo.png'
 import Php from '@/images/icons/Php_logo.png'
 import Wordpress from '@/images/icons/Wordpress_logo.png'
+import Heart from '@/images/icons/heart.png'
 import HomeDisplayComponent from './HomeDisplayComponent.vue'
 
 const globeContainer = ref(null)
@@ -52,6 +53,7 @@ const imageNodes = [
   { name: 'Php', url: Php, link: 'https://github.com' },
   { name: 'Adobe Photoshop', url: Photoshop, link: 'https://github.com' },
   { name: 'Wordpress', url: Wordpress, link: 'https://github.com' },
+  { name: '554', url: Heart, link: 'https://github.com' },
 ]
 
 
